@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Question {{q_num}}{% endblock %}
+
+{% block content %}
+<h1>Question {{q_num}}</h1>
+<p>{{question.question}}</p>
+<!-- <form action="/questions/{{q_num+1}}"> -->
+<form action="/answer" method="POST">
+    <select name="ans" required>
+        {% for choice in question.choices %}
+        <option value={{choice}}>{{choice}}</option>
+        {% endfor %}
+    </select>
+    <button>Submit</button>
+</form>
+
+{% endblock %}
